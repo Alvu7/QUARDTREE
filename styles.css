@@ -1,0 +1,52 @@
+:root {
+  --bg: #090d1a;
+  --panel: #121a2b;
+  --panel-2: #0e1423;
+  --text: #e6edff;
+  --muted: #9cb1d6;
+  --accent: #55d6ff;
+  --accent-2: #8b7dff;
+  --ok: #2ed6a1;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at top, #111b33 0, var(--bg) 50%);
+}
+.hero, .layout { width: min(1200px, 94vw); margin: 0 auto; }
+.hero { padding: 2rem 0 1rem; }
+.eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .1em; font-size: .8rem; }
+h1 { margin: .4rem 0; font-size: clamp(1.8rem, 4vw, 3rem); }
+.layout { display: grid; gap: 1rem; padding-bottom: 2rem; }
+.card {
+  background: linear-gradient(170deg, var(--panel), var(--panel-2));
+  border: 1px solid #23304d;
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 10px 35px rgba(0,0,0,.25);
+}
+.theory ul { color: var(--muted); }
+.theory p { color: var(--muted); }
+.columns { display: grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); }
+.chip-grid { display:flex; gap:.6rem; flex-wrap: wrap; }
+.chip { background:#1d2842; color:#d4deff; padding:.45rem .7rem; border-radius:999px; }
+.controls { display:flex; flex-wrap:wrap; gap:.6rem; align-items:center; margin-bottom:1rem; }
+button {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #041020; border: none; border-radius: 10px;
+  padding: .6rem .8rem; font-weight:700; cursor:pointer; transition: transform .18s ease;
+}
+button:hover { transform: translateY(-1px); }
+label { color: var(--muted); display:flex; align-items:center; gap:.5rem; }
+.sim-grid { display:grid; gap:1rem; grid-template-columns: 2fr 1fr; }
+.canvas-panel, .tree-panel { background:#0b1221; border:1px solid #243253; border-radius:12px; padding:.8rem; }
+canvas { width:100%; background:#050913; border-radius:8px; border:1px solid #1c2947; }
+.dynamic-text { color: var(--ok); min-height: 1.5rem; }
+.tree-view { max-height: 460px; overflow:auto; font-family: ui-monospace, Menlo, monospace; font-size:.83rem; color:#b7c9f7; }
+.stats { margin-top:1rem; display:grid; gap:.8rem; grid-template-columns: repeat(auto-fit,minmax(140px,1fr)); }
+.stat { background:#0c1324; border:1px solid #223157; border-radius:10px; padding:.7rem; }
+.stat span { color:var(--muted); font-size:.8rem; display:block; }
+.stat strong { font-size:1.3rem; }
+@media (max-width: 900px){ .sim-grid{ grid-template-columns:1fr; } }

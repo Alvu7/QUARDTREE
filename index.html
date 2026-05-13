@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quadtree Lab Interactivo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Estructuras de datos espaciales</p>
+        <h1>Quadtree Lab Interactivo</h1>
+        <p>
+          Aprende teoría y observa en tiempo real cómo un Quadtree subdivide el
+          espacio. Diseñado para estudiantes de ingeniería e informática.
+        </p>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="card theory" id="teoria">
+        <h2>1. ¿Qué es un Quadtree?</h2>
+        <p>
+          Un <strong>Quadtree</strong> es un árbol jerárquico para representar
+          datos en 2D. Cada nodo cubre una región rectangular y, cuando necesita
+          más detalle, se divide en cuatro cuadrantes: <strong>NW, NE, SW, SE</strong>.
+        </p>
+        <ul>
+          <li><strong>Sirve para:</strong> organizar puntos, regiones o píxeles.</li>
+          <li><strong>Ventajas:</strong> búsquedas espaciales rápidas, partición adaptable.</li>
+          <li><strong>Desventajas:</strong> puede desbalancearse con datos muy sesgados.</li>
+        </ul>
+      </section>
+
+      <section class="card theory">
+        <h2>2. Funcionamiento</h2>
+        <p>
+          Al insertar puntos, cada nodo acepta elementos hasta una capacidad
+          máxima. Si se supera, el nodo se subdivide recursivamente en:
+        </p>
+        <div class="chip-grid">
+          <span class="chip">Northwest (NW)</span>
+          <span class="chip">Northeast (NE)</span>
+          <span class="chip">Southwest (SW)</span>
+          <span class="chip">Southeast (SE)</span>
+        </div>
+      </section>
+
+      <section class="card theory">
+        <h2>3. Usos reales</h2>
+        <div class="columns">
+          <ul>
+            <li>Videojuegos: detección de colisiones.</li>
+            <li>Mapas y GPS: indexación geoespacial.</li>
+            <li>Compresión de imágenes.</li>
+          </ul>
+          <ul>
+            <li>Inteligencia artificial en entornos 2D.</li>
+            <li>Simulación física y N-body.</li>
+            <li>Bases de datos espaciales.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="card theory">
+        <h2>4. Complejidad</h2>
+        <ul>
+          <li><strong>Inserción:</strong> promedio cercano a O(log n).</li>
+          <li><strong>Búsqueda espacial:</strong> eficiente por poda de regiones.</li>
+          <li><strong>División espacial:</strong> O(1) por subdivisión local.</li>
+          <li>
+            <strong>Vs árbol binario:</strong> divide por área 2D, no por una sola
+            dimensión.
+          </li>
+        </ul>
+      </section>
+
+      <section class="card simulator-card">
+        <div class="sim-header">
+          <h2>5. Ejemplo práctico + Simulador interactivo</h2>
+          <p>
+            Clic en el canvas para insertar puntos. Observa subdivisiones, profundidad,
+            etiquetas de cuadrantes y recorrido de búsqueda.
+          </p>
+        </div>
+
+        <div class="controls">
+          <button id="randomBtn">Insertar puntos aleatorios</button>
+          <button id="resetBtn">Reiniciar</button>
+          <button id="stepBtn">Modo paso a paso: OFF</button>
+          <button id="searchBtn">Buscar punto: OFF</button>
+          <label>
+            Capacidad máxima por nodo:
+            <input id="capacitySlider" type="range" min="1" max="8" value="4" />
+            <span id="capacityValue">4</span>
+          </label>
+        </div>
+
+        <div class="sim-grid">
+          <div class="canvas-panel">
+            <canvas id="quadCanvas" width="760" height="460"></canvas>
+            <p id="dynamicExplanation" class="dynamic-text">
+              Inserta puntos para comenzar la simulación.
+            </p>
+          </div>
+          <aside class="tree-panel">
+            <h3>Visualización jerárquica</h3>
+            <div id="treeView" class="tree-view"></div>
+          </aside>
+        </div>
+
+        <div class="stats">
+          <div class="stat"><span>Nodos totales</span><strong id="totalNodes">1</strong></div>
+          <div class="stat"><span>Profundidad máxima</span><strong id="maxDepth">0</strong></div>
+          <div class="stat"><span>Subdivisiones</span><strong id="subdivisions">0</strong></div>
+          <div class="stat"><span>Puntos</span><strong id="pointsCount">0</strong></div>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
